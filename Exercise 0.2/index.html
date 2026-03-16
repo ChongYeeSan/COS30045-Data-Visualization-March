@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appliance Energy Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo" onclick="showPage('home')" title="Return Home">
+            <span class="power-icon">&#11088;</span> </div>
+        <ul class="nav-links">
+            <li id="link-home" class="active" onclick="showPage('home')">Home</li>
+            <li id="link-tv" onclick="showPage('tv')">Televisions</li>
+            <li id="link-about" onclick="showPage('about')">About Us</li>
+        </ul>
+    </nav>
+
+    <main id="content-area">
+        <section id="home" class="page">
+            <h1>Welcome to Energy Ratings AU</h1>
+            <p>Your guide to choosing energy-efficient appliances for a sustainable Australian home.</p>
+            <div class="card">
+                <h3>Did you know?</h3>
+                <p>The Australian Energy Rating Label helps you compare the energy efficiency and running costs of appliances before you buy.</p>
+            </div>
+        </section>
+
+        <section id="tv" class="page" style="display:none;">
+            <h1>Television Energy Consumption</h1>
+            <p>Modern LED and OLED TVs vary significantly in power usage.</p>
+            
+            <table>
+                <tr>
+                    <th>TV Type</th>
+                    <th>Avg. Annual Cost (AU)</th>
+                    <th>Efficiency Rating</th>
+                </tr>
+                <tr>
+                    <td>65" OLED</td>
+                    <td>$45 - $60</td>
+                    <td>★★★★★</td>
+                </tr>
+                <tr>
+                    <td>65" LED-LCD</td>
+                    <td>$30 - $50</td>
+                    <td>★★★★★★</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="about" class="page" style="display:none;">
+            <h1>About Us</h1>
+            <p>We are dedicated to educating Australian consumers on reducing their carbon footprint through smarter appliance choices.</p>
+        </section>
+    </main>
+
+    <footer>
+        
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

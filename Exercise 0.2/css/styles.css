@@ -1,0 +1,85 @@
+/* Color Palette */
+:root {
+    --dark-brown: #5D4037;   /* Primary Nav & Footer */
+    --earth-beige: #F5F5DC;  /* Main Background */
+    --energy-orange: #FF8C00; /* Active Links & Buttons */
+    --soft-orange: #FFB347;   /* Hover states */
+    --text-white: #FFFFFF;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--earth-beige);
+    color: #333;
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: var(--dark-brown);
+    padding: 10px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.logo-container {
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--energy-orange);
+    margin-right: 50px;
+    transition: transform 0.2s;
+}
+
+.logo-container:hover {
+    transform: scale(1.1);
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    color: var(--text-white);
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+/* Mouse Over Feedback */
+.nav-item:hover {
+    background-color: var(--soft-orange);
+    color: var(--dark-brown);
+}
+
+/* Current Page Feedback */
+.nav-item.active {
+    background-color: var(--energy-orange);
+    color: white;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* Content Area */
+.content-section {
+    padding: 50px;
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    min-height: 60vh;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+footer {
+    background-color: var(--dark-brown);
+    color: var(--earth-beige);
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
