@@ -7,6 +7,7 @@
     --text-white: #FFFFFF;
 }
 
+/* Body */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -14,7 +15,7 @@ body {
     color: #333;
 }
 
-/* Navigation */
+/* Navigation Bar */
 .navbar {
     display: flex;
     align-items: center;
@@ -23,7 +24,8 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-.logo-container {
+/* Logo */
+.logo {
     cursor: pointer;
     font-size: 2rem;
     color: var(--energy-orange);
@@ -31,11 +33,12 @@ body {
     transition: transform 0.2s;
 }
 
-.logo-container:hover {
+.logo:hover {
     transform: scale(1.1);
 }
 
-.nav-menu {
+/* Navigation Links */
+.nav-links {
     list-style: none;
     display: flex;
     gap: 15px;
@@ -43,7 +46,8 @@ body {
     padding: 0;
 }
 
-.nav-item {
+/* Individual Navigation Item */
+.nav-links li {
     color: var(--text-white);
     padding: 10px 20px;
     cursor: pointer;
@@ -53,29 +57,62 @@ body {
 }
 
 /* Mouse Over Feedback */
-.nav-item:hover {
+.nav-links li:hover {
     background-color: var(--soft-orange);
     color: var(--dark-brown);
 }
 
 /* Current Page Feedback */
-.nav-item.active {
+.nav-links li.active {
     background-color: var(--energy-orange);
     color: white;
     box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
 }
 
 /* Content Area */
-.content-section {
+#content-area {
     padding: 50px;
     max-width: 900px;
     margin: auto;
-    background: white;
-    min-height: 60vh;
-    margin-top: 20px;
-    border-radius: 8px;
 }
 
+/* Page Sections */
+.page {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    min-height: 60vh;
+}
+
+/* Card styling */
+.card {
+    background: #fff3e0;
+    border-left: 5px solid var(--energy-orange);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: var(--energy-orange);
+    color: white;
+}
+
+/* Footer */
 footer {
     background-color: var(--dark-brown);
     color: var(--earth-beige);
