@@ -1,15 +1,14 @@
-/* Color Palette */
 :root {
-    --dark-brown: #5D4037;   /* Primary Nav & Footer */
-    --earth-beige: #F5F5DC;  /* Main Background */
-    --energy-orange: #FF8C00; /* Active Links & Buttons */
-    --soft-orange: #FFB347;   /* Hover states */
+    --dark-brown: #5D4037;   
+    --earth-beige: #F5F5DC;  
+    --energy-orange: #FF8C00; 
+    --soft-orange: #FFB347;   
     --text-white: #FFFFFF;
 }
 
 /* Body */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     background-color: var(--earth-beige);
     color: #333;
@@ -18,13 +17,13 @@ body {
 /* Navigation Bar */
 .navbar {
     display: flex;
-    align-items: center;
-    background-color: var(--dark-brown);
-    padding: 10px 30px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    align-items: space-between;
+    background-color: var(--primary-color);
+    padding: 12px 25px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
 }
 
-/* Logo */
+/*Makes logo clickable */
 .logo {
     cursor: pointer;
     font-size: 2rem;
@@ -37,12 +36,11 @@ body {
     transform: scale(1.1);
 }
 
-/* Navigation Links */
+/* Display links are displayed horizontally*/
 .nav-links {
-    list-style: none;
     display: flex;
-    gap: 15px;
-    margin: 0;
+    gap: 20px;
+    list-style-type: none;
     padding: 0;
 }
 
@@ -56,27 +54,27 @@ body {
     font-weight: 500;
 }
 
-/* Mouse Over Feedback */
+
 .nav-links li:hover {
     background-color: var(--soft-orange);
     color: var(--dark-brown);
 }
 
-/* Current Page Feedback */
+
 .nav-links li.active {
     background-color: var(--energy-orange);
     color: white;
     box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
 }
 
-/* Content Area */
+
 #content-area {
     padding: 50px;
     max-width: 900px;
     margin: auto;
 }
 
-/* Page Sections */
+
 .page {
     background: white;
     padding: 30px;
@@ -84,7 +82,7 @@ body {
     min-height: 60vh;
 }
 
-/* Card styling */
+
 .card {
     background: #fff3e0;
     border-left: 5px solid var(--energy-orange);
@@ -93,7 +91,7 @@ body {
     border-radius: 5px;
 }
 
-/* Table Styling */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -112,7 +110,7 @@ table th {
     color: white;
 }
 
-/* Footer */
+/*Footer*/
 footer {
     background-color: var(--dark-brown);
     color: var(--earth-beige);
