@@ -37,10 +37,10 @@ body {
     transform: scale(1.1);
 }
 
-/* Display links are displayed horizontally*/
+/* Navigation bars */
 .nav-links {
-    display: flex;
-    gap: 20px;
+    display: inline-flex;
+    gap: 10px;
     list-style-type: none;
     padding: 0;
 }
