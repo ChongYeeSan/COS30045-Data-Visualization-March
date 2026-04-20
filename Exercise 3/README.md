@@ -11,6 +11,19 @@ You must use the **Exercise 3 folder in your existing forked repository** and re
 ---
 
 ## Data Story
+Data Source : This dataset came from the data.gov.au website and talks about the household appliances such as Televisons in Australia. Some  of the attributes in the dataset are:
+## Model_No
+## screensize
+## Brand_Reg
+## Star2 (where the rating of the energy comsumptions where the higher the star the more consumption it consumes)
+
+Data Processing : The data has been cleaned as it contains data that is unclean and corrupted data. It was also grouped by attributes such as Screen_Tech, and avg_mode_power, Brand_Reg, screensize and others.
+
+Privacy : This data does not contain any private information as it is a product/ appliances dataset.
+
+Accuracy & limitation : The dataset had some missing numbers and some columns were empty.
+
+Ethics : This data has no ethical concerns as the dataset is published and publicly available by the government of Australia.
 
 ### Audience
 
