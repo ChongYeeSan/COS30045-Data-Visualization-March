@@ -152,12 +152,26 @@ footer {
 .story-panel {
     background: white;
     border-radius: 12px;
-    padding: 25px;
+    padding: 50px;
     margin-bottom: 25px;
     border-left: 8px solid var(--energy-orange);
     color: var(--dark-brown);
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+
+.story-panel:nth-child(5) {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 900px;
+    margin: 0 auto 25px auto;
+}
+
+.story-panel:nth-child(5) img {
+    width: 100%;
+    height: auto;
+}
+
 /* Added a brighter color for the recommendation panel */
 .story-panel:last-child {
     background-color: #ffbf00;  

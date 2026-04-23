@@ -10,4 +10,8 @@ function showPage(pageId) {
         link.classList.remove('active');
    });
    document.getElementById("link-" + pageId).classList.add('active');
+   
 }
+
+showPage('home');
+

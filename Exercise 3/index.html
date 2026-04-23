@@ -19,7 +19,8 @@
         <li id="link-home" class="active" onclick="showPage('home')">Home</li>
         <li id="link-tv" onclick="showPage('tv')">Televisions</li>
         <li id="link-about" onclick="showPage('about')">About Us</li>
-        <li id="link-datastory" onclick="showPage('datastory')">Data Story</li>
+        <li id="link-datastory" onclick="showPage('datastory')">Data Story 1</li>
+        <li id="link-datastory2" onclick="showPage('datastory2')">Data Story 2</li>
         
     </ul>
 </nav>
@@ -48,13 +49,13 @@
                 </tr>
                 <tr>
                     <td>OLED</td>
-                    <td>65"</td>
+                    <td>55"</td>
                     <td>★★★★★</td>
                     <td>140 - 190 kWh</td>
                 </tr>
                 <tr>
                     <td>LED</td>
-                    <td>55"</td>
+                    <td>65"</td>
                     <td>★★★★★★</td>
                     <td>175 - 110 kWh</td>
                 </tr>
@@ -66,11 +67,11 @@
                 </tr>
             </table>
 
-            <div class="card">
+            <!-- <div class="card">
                 <p>Curious why some TVs use more energy than others?</p>
                 <a href="#" onclick="showPage('datastory')">Read our full Data Story research here →</a>
                 </p>    
-            </div>
+            </div> -->
         </section>
         <!-- Inserted a About Us page to explain about what the page is for -->
         <section id="about" class="page" style="display:none;">
@@ -82,9 +83,9 @@
         <!-- Data Story -->
         <section id="datastory" class="page" style ="display: none;">
 
-            <div class="story-panel">
+            <!-- <div class="story-panel">
                 <p><em>Research Context:</em> We analyzed over 347 models to understand the science behind the energy ratings seen on our <a href="#" onclick="showPage('tv')">Televisions page</a>.</p>
-                </div>
+                </div> -->
 
             <div class = "story-container">
 
@@ -126,29 +127,103 @@
 
             <div class="story-panel fade-up">
                 <h2>Ideas to Overcome Energy Consumption in Australian Homes</h2>
-                <p>1) Opt for television with Energy Star labels, which are design to consume less power and reduce energy usage.<br>
-                   2) Optimise TV settings such as reducing screen brightness and enabling power saving mode. <br>
-                   3) Turn off when not in use instead of leaving it on standby mode.</p>
+                <ul>
+                    <li>Opt for television with Energy Star labels, which are design to consume less power and reduce energy usage.</li>
+                    <li>Optimise TV settings such as reducing screen brightness and enabling power saving mode.</li>
+                     <li>Turn off when not in use instead of leaving it on standby mode.</li>                
+                </ul>
             </div>
 
             <div class="story-panel fade-up">
                 <h2>Our Goals</h2>
-                <p>Reducing television usage by minimising electricity usage and carbon footprint.</p>
+                <ul>
+                    <li>Reducing television usage by minimising electricity usage and carbon footprint.</li>
+                </ul>
             </div>
 
             <div class="story-panel fade-up">
                 <h2>Charts</h2>
                 <p>Average power consumptions by screen technology across 347 TV models available in Australia:</p>
-                <img src="images/Screen Type power consumption.png" alt="Bar chart showing screen technology power consumption" style="width: 100%; max-width: 600px;">
-
+                <img src="images/Screen Type power consumption.png" alt="Bar chart showing screen technology power consumption">
             </div>
 
             <div class="story-panel fade-up">
                 <h2>Recommendation</h2>
-                <p>After comparing screen technology by their power consumptions, LCD TVs consumed the least power at <strong>87.85W</strong>, with 26% lesser than OLED screens at 128.71W. 
-                   For consumers that like to purchase the least power consumption television, LCD is the most efficient choice.</p>
+                <p>After comparing screen technology by their power consumptions, LCD (LED) TVs consumed the least power at <strong>73.40W</strong>, compared to LCD screen at 96.45W. 
+                   For consumers that like to purchase the least power consumption television, LCD (LED) is the most efficient choice.</p>
             </div>
         </section>
+        <!-- DataStory 2 -->
+
+        <section id="datastory2" class="page" ="display:none;">
+            
+            <div class="story-container">
+                <div class="story-panel fade-up">
+                    <h2>The Issue</h2>
+                    <p>With so many TV brands in Australia, consumers don't know which brand offers the 
+                        most variety and choice of models.</p>
+                </div>
+
+                <div class="story-panel fade-up">
+                    <h2>Demonstration Issue: Data Research</h2>
+                    <p>Table below is data showing a few brands and their model.</p>
+
+                    <table>
+                    <tr>
+                        <th>Brands</th>
+                        <th>Model NUmber</th>
+                    </tr>     
+                    <tr>
+                        <th>Samsung Electronics</th>
+                        <th>731</th>
+                    </tr>  
+                    <tr>
+                        <th>LG</th>
+                        <th>683</th>
+                    </tr>    
+                    <tr>
+                        <th>Kogan</th>
+                        <th>416</th>
+                    </tr>     
+                    <tr>
+                        <th>Hisense</th>
+                        <th>323</th>
+                    </tr>    
+                    </table>
+                </div>
+
+                <div class="story-panel fade-up">
+                    <h2>Ideas to Overcome</h2>
+                    <ul>
+                        <li>Search for brands that have variety of models as some consumers have budgets.</li>
+                        <li>Compare models within the same brand to get better deals.</li> 
+                        <li>Check for energy ratings across models for the lest power consumption.</li>
+                    </ul>
+                </div>
+
+                <div class="story-panel fade-up">
+                    <h2>Our Goals</h2>
+                    <ul>
+                        <li>Help identify what brands offers the most 
+                            varieties in Australia so that they are able to make better purchasing decisions.</li>
+                    </ul>
+                </div>
+                <div class="story-panel fade-up">
+                    <h2>Charts</h2>
+                    <p>The brands with the highest number of models in Australia.</p>
+                    <img src="images/Brands with the largest models.png" alt="Bar chart showing the brands with the highest brand models in Australia.">
+                </div>
+
+                <div class="story-panel fade-up">
+                    <h2>Recommendations</h2>
+                    <p>After comparison of which TV brand has the highest models, <strong>Samsung Electronics</strong> has the highest number of models, followed by <strong>LG</strong> with the second highest models. </p>
+                </div>
+            </div>
+        </section>
+
+
+
+
     </main>
     <!-- Mentioned the use of GenAI in the footer of the website -->
     <footer>
