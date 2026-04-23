@@ -19,9 +19,9 @@ Data Source : This dataset came from the data.gov.au website and talks about the
 
 Data Processing : The data has been cleaned as it contains data that is unclean and corrupted data. It was also grouped by attributes such as Screen_Tech, and avg_mode_power, Brand_Reg, screensize and others.
 
-Privacy : This data does not contain any private information as it is a product/ appliances dataset.
+Privacy : This data does not contain any private information as it is a product/appliances dataset.
 
-Accuracy & limitation : The dataset had some missing numbers and some columns were empty.
+Accuracy & limitation : The dataset had some missing numbers and some columns were empty. There is a data limitation on the column "screensize", because the exact measurement result in too many unique values. Its preventing meaningful grouping or comparison, as frequencies appear nearly identical across sizes.
 
 Ethics : This data has no ethical concerns as the dataset is published and publicly available by the government of Australia.
 
