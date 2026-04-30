@@ -11,7 +11,7 @@
 body {
     font-family: Helvetica,Verdana, sans-serif;
     margin: 0;
-    background-color: var(--earth-beige);
+    background-color: #F5F5DC;
     color: #333;
 }
 
@@ -84,7 +84,7 @@ body {
 
 /* creates a smaller card-like inside*/
 .card {
-    background: #f4d4a0;
+    background: #f9cf8b;
     border-left: 5px solid var(--earth-beige);
     padding: 20px;
     margin-top: 50px;
@@ -93,9 +93,11 @@ body {
 
 /* AI generated using ChatGPT */
 table {
+    background-color: #faeedb;
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    color: #333;
 }
 
 /*alignment of words in the table and add border */
@@ -106,16 +108,10 @@ table td {
     text-align: center;
 }
 
-/* adjust background color for table and adjust word color*/
-table th {
-    background-color: var(--earth-beige);
-    color: rgb(19, 18, 18);
-}
-
 /*Footer*/
 footer {
-    background-color: var(--dark-brown);
-    color: var(--earth-beige);
+    background-color: #8c513f;
+    color: #F5F5DC;
     text-align: center;
     padding: 20px;
     margin-top: 40px;
