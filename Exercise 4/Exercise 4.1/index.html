@@ -43,6 +43,7 @@
   <div class="canvas">
     <h1>A House with Garden</h1>
     <svg viewBox="0 0 720 650" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title desc" role="img">
+      
       <title>House with garden illustrated using SVG shapes, paths, text, grouping, transformations, and styles.</title>
       <desc>A simple house with a garden, showing SVG rectangles, circles, ellipses, lines, paths, grouped elements, transformations, and styled text.</desc>
 
@@ -69,13 +70,16 @@
       <g id="house" transform="translate(180 200)">
         <rect x="0" y="80" width="260" height="170" rx="20" ry="20" fill="#f4b47f" stroke="#bc7b5a" stroke-width="6" /> 
         <polygon points="0,80 130,0 260,80" fill="#a1502b" stroke="#7b381b" stroke-width="6" /> 
+      <!-- windows -->
+        <g fill="#fff7d6" stroke="#d9c281" stroke-width="5">
+          <rect x="197" y="125" width="36" height="60" />
+          <rect x="127" y="125" width="38" height="60" />
+        </g>
         <rect x="28" y="130" width="70" height="120" rx="10" ry="10" fill="#5b8fcd" stroke="#395a80" stroke-width="5" /> 
-        <rect x="197" y="125" width="36" height="60" fill="#fff7d6" stroke="#d9c281" stroke-width="5" />
-        <rect x="127" y="125" width="38" height="60" fill="#fff7d6" stroke="#d9c281" stroke-width="5" />
-        <!-- <path d="M163 275 l0 25 c0 14 11 25 25 25 s25 -11 25 -25 l0 -25" fill="#5a7f4f" stroke="#3f5735" stroke-width="5" />  -->
         <circle cx="40" cy="190" r="8" fill="#ffe19e" stroke="#c9972f" stroke-width="3" />
         <line x1="0" y1="255" x2="260" y2="255" stroke="#7b381b" stroke-width="6" />
       </g>
+      
 
       <!-- garden area with paths and flowers -->    
 
@@ -209,6 +213,7 @@
       <!-- decorative line element -->
       <!-- <line x1="40" y1="500" x2="680" y2="500" stroke="#4a6271" stroke-width="3" stroke-dasharray="8 6" /> -->
     </svg>
+    <img src="https://cdn.pixabay.com/photo/2016/11/29/03/53/sun-1867278_1280.png" alt="Sun Icon" style="position: absolute; top: 20px; right: 20px; width: 60px; height: 60px; opacity: 0.8;" />
   </div>
 </body>
 </html>
