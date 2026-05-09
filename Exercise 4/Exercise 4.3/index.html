@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<!-- Included background color -->
+<style>
+    
+    body {
+        background-color: #9ecaf5;
+    }
+    
+</style>
+<body>
+    <h2>Drawing shapes with Javascript</h2>
+    <p>Adding elements to a webpage</p>
+
+    <!-- SVG container for drawing shapes -->
+    <div class="responsive-svg-container">
+
+    <!-- Include the D3.js library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+    const width = 500;
+    const height = 500;
+
+    const svg = d3.select(".responsive-svg-container")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+    //Draw a rectangle using the rect element
+    svg.append("rect")
+        .attr("x", 50)
+        .attr("y", 50)
+        .attr("width", 100)
+        .attr("height", 100)
+        .attr("fill", "purple");
+    //Draw a circle using the circle element
+    svg.append("circle")
+        .attr("cx", 300)
+        .attr("cy", 300)
+        .attr("r", 50)
+        .attr("fill", "orange");
+    //Draw a line using the line element
+    svg.append("line")
+        .attr("x1", 50)
+        .attr("y1", 300)
+        .attr("x2", 200)
+        .attr("y2", 400)
+        .attr("stroke", "crimson")
+        .attr("stroke-width", 2);
+    //Draw a triangle using the polygon element
+    svg.append("polygon")
+        .attr("points", "300,50 350,150 250,150")
+        .attr("fill", "green");
+    //Apply styling to the text elements
+    d3.select("h2").style("color", "yellow");
+    d3.select("p").style("color", "navy");
+    </script>   
+</body>
+
+</div>
+</html>
