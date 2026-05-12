@@ -1,4 +1,4 @@
-d3.csv("Energy consumption for television in Australia.csv", function(data) {
+d3.csv("data/Energy_consumption_for_televion_in_Australia.csv", function(d) {
     return {
         brand: d.Brand_Reg,
         screentech: d.Screen_Tech,
