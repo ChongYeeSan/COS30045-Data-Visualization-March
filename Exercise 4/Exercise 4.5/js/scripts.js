@@ -73,6 +73,7 @@ const myData2 = [
     {brand: "Hisense", modelCount: 323},
 ];
 
+
 svg2.selectAll("rect")
     .data(myData2)
     .join("rect")
@@ -82,7 +83,7 @@ svg2.selectAll("rect")
     .attr("height", d => d.modelCount * 1.5)
     .attr("fill", "steelblue");
 
-svg2.selectAll("text")
+svg2.selectAll("text") 
     .data(myData2)
     .join("text")
     .attr("x", d, i => d.modelCount * 1.5 + 10)
