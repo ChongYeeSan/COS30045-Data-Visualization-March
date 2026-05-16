@@ -164,4 +164,17 @@ footer {
     width: 100%;
     max-width: 1200px;
 }
+/* Makes the x and y axis line visible */
+.axis path,
+.axis line {
+    stroke: black;
+    shape-rendering: crispEdges; /* Ensures sharp edges for axes */
+}
+
+.axis text {
+    fill: black;
+    font-size: 16px;
+}
+
+
 

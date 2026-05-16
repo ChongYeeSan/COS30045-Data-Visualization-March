@@ -41,16 +41,18 @@ const myData = [
     {Screen_Tech: "LCD", avgPower: 96.45}
 ];
 
-const margin1 = {top: 20, right: 40, bottom: 50, left: 120};
+const margin1 = {top: 20, right: 180, bottom: 50, left: 120};
 
 const xScale = d3.scaleLinear()
-    .domain([0, d3.max(myData, d => d.avgPower)])
-    .range([margin1.left, width - margin1.right])
-    
+    .domain([0, 100])
+    .range([margin1.left, width - margin1.right]);
+
 const yScale = d3.scaleBand()
     .domain(myData.map(d => d.Screen_Tech))
     .range([margin1.top, height - margin1.bottom])
     .padding(0.3);
+
+const colors1 = ["pink", "orange", "green", "red"];
 
 svg.selectAll("rect")
     .data(myData)
@@ -59,13 +61,15 @@ svg.selectAll("rect")
     .attr("y", d => yScale(d.Screen_Tech))
     .attr("width", d => xScale(d.avgPower) - margin1.left)
     .attr("height", yScale.bandwidth())
-    .attr("fill", "steelblue");
+    .attr("fill", (d, i) => colors1[i]);
 
 svg.append("g")
+    .attr("class", "axis")
     .attr("transform", `translate(0, ${height - margin1.bottom})`)
     .call(d3.axisBottom(xScale));
 
 svg.append("g")
+    .attr("class", "axis")
     .attr("transform", `translate(${margin1.left}, 0)`)
     .call(d3.axisLeft(yScale));
 
@@ -74,9 +78,26 @@ svg.selectAll("label")
     .join("text")
     .attr("class", "label")
     .attr("x", d =>xScale(d.avgPower) + 5)
-    .attr("y", d => yScale(d.Screen_Tech) + yScale.bandwidth() / 2 + 5)
-    .text(d => d.avgPower + "kWh/year")
-    .attr("font-size", "14px");
+    .attr("y", d => yScale(d.Screen_Tech) + yScale.bandwidth() / 2 + 5) 
+    .text(d => d.avgPower + " kWh/year")
+    .attr("font-size", "16px");
+
+const legend1 = svg.append("g")
+    .attr("transform", `translate(${width - margin1.right - 20}, ${margin1.top})`);
+
+myData.forEach((d, i) => { 
+    legend1.append("rect")
+        .attr("width", 20)
+        .attr("height", 20)
+        .attr("y", i * 30)
+        .attr("fill", colors1[i]);
+
+    legend1.append("text")
+        .attr("x", 30)
+        .attr("y", i * 30 + 15)
+        .text(d.Screen_Tech)
+        .attr("font-size", "14px");
+});
 
 
 // Chart 2 - Brands with the most models
@@ -100,8 +121,11 @@ const xScale1 = d3.scaleBand()
     .padding(0.3);
 
 const yScale2 = d3.scaleLinear()
-    .domain([0, d3.max(myData2, d => d.modelCount)])
+    .domain([0, 800])
     .range([height - margin2.bottom, margin2.top]);
+
+
+const colors2 = ["steelblue", "orange", "green", "purple"];
 
 svg2.selectAll("rect")
     .data(myData2)
@@ -110,21 +134,42 @@ svg2.selectAll("rect")
     .attr("y", d => yScale2(d.modelCount))
     .attr("width", xScale1.bandwidth())
     .attr("height", d => height - margin2.bottom - yScale2(d.modelCount))
-    .attr("fill", "steelblue");
+    .attr("fill", (d, i) => colors2[i]);
 
 svg2.append("g")
+    .attr("class", "axis")
     .attr("transform", `translate(0, ${height - margin2.bottom})`)
     .call(d3.axisBottom(xScale1));
 
 svg2.append("g")
+    .attr("class", "axis")
     .attr("transform", `translate(${margin2.left}, 0)`)
     .call(d3.axisLeft(yScale2));
 
 svg2.selectAll(".bar-label")
     .data(myData2)
     .join("text")
-    .attr("x", d =>xScale1(d.brand) + 5)
+    .attr("x", d =>xScale1(d.brand) + xScale1.bandwidth() / 2)
     .attr("y", d => yScale2(d.modelCount) - 5)
+    .attr("text-anchor", "middle")
     .text(d => d.modelCount)
-    .attr("font-size", "14px");
+    .attr("font-size", "20px");
+
+const legend = svg2.append("g")
+    .attr("transform", `translate(${width - margin2.right - 150}, ${margin2.top})`);
+
+myData2.forEach((d, i) => {
+    legend.append("rect")
+        .attr("width", 20)
+        .attr("height", 20)
+        .attr("y", i * 30)
+        .attr("fill", colors2[i]);
+
+    legend.append("text")
+        .attr("x", 30)
+        .attr("y", i * 30 + 15)
+        .text(d.brand)
+        .attr("font-size", "14px");
+});
+
 

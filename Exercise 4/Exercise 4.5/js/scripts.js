@@ -73,7 +73,6 @@ const myData2 = [
     {brand: "Hisense", modelCount: 323},
 ];
 
-
 svg2.selectAll("rect")
     .data(myData2)
     .join("rect")
