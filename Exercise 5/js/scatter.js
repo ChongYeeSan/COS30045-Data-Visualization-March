@@ -1,13 +1,12 @@
-<script src="//d3js.org/d3.v3.min.js"></script>
     const xSize = 500;
     const ySize = 500;
-    const margin = 40;
+    const margin = 60;
     const xMax = xSize - margin*2;
     const yMax = ySize - margin*2;
 
     // Creating the SVG
 
-    const svg = d3.select("body")
+    const svg = d3.select("#scatter")
         .append("svg")
         .attr("width", xSize)
         .attr("height", ySize)
@@ -24,20 +23,41 @@
 
     const x = d3.scaleLinear()
         .domain([0, d3.max(data, d => d.star_rating)])
-        .range([margin, xMax]);
+        .range([margin, xSize - margin]);
 
     const y = d3.scaleLinear()
         .domain([0, d3.max(data, d => d.energy_consumption)])
-        .range([yMax, 0]);
+        .range([ySize - margin, margin]);
+    
+    svg.append("g")
+        .attr("transform", `translate(0, ${ySize - margin})`)
+        .call(d3.axisBottom(x));
 
     svg.append("g")
-        .selectAll("dot")
+        .attr("transform", `translate(${margin}, 0)`)
+        .call(d3.axisLeft(y));
+
+    svg.append("g")
+        .selectAll("circle")
         .data(data).enter()
         .append("circle")
-        .attr("cx", function(d) { return x(d.star_rating) })
-        .attr("cy", function(d) { return y(d.energy_consumption) })
+        .attr("cx", d => x(d.star_rating))
+        .attr("cy", d => y(d.energy_consumption))
         .attr("r", 5)
         .style("fill", "#f61212");
+
+    svg.append("text")
+        .attr("x",xSize / 2)
+        .attr("y", ySize - 5)
+        .attr("text-anchor", "middle")
+        .text("Star Rating");
+
+    svg.append("text")
+        .attr("x", -ySize / 2)
+        .attr("y", 15)
+        .attr("transform", "rotate(-90)")
+        .attr("text-anchor", "middle")
+        .text("Energy Consumption");
 
 
 }).catch(error => {
