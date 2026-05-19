@@ -28,14 +28,17 @@
     const y = d3.scaleLinear()
         .domain([0, d3.max(data, d => d.energy_consumption)])
         .range([ySize - margin, margin]);
-    
-    Scattersvg.append("g")
-        .attr("transform", `translate(0, ${ySize - margin})`)
-        .call(d3.axisBottom(x));
 
-    Scattersvg.append("g")
-        .attr("transform", `translate(${margin}, 0)`)
-        .call(d3.axisLeft(y));
+
+    const tooltip = d3.select("body")
+        .append("div")
+        .attr("position", "absolute")
+        .attr("background", "white")
+        .attr("padding", "8px")
+        .attr("border", "1px solid #ccc")
+        .attr("border-radius", "4px")
+        .style("font-size", "12px")
+        .style("display", "none");
 
     Scattersvg.append("g")
         .selectAll("circle")
@@ -44,7 +47,34 @@
         .attr("cx", d => x(d.star_rating))
         .attr("cy", d => y(d.energy_consumption))
         .attr("r", 5)
-        .style("fill", "#9932e3");
+        .style("fill", "#9932e3")
+        .on("mouseover", function(event, d) {
+            d3.select(this)
+                .transition()
+                .duration(200)
+                .attr("r", 10);
+            tooltip.style("display", "block")
+                .html(`<strong>Star Rating:</strong> ${d.star_rating}<br><strong>Energy:</strong> ${d3.format(".1f")(d.energy_consumption)} kWh/year`);
+        })
+        .on("mousemove", function(event) {
+            tooltip.style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 20) + "px");
+        })
+        .on("mouseout", function() {
+            d3.select(this)
+                .transition()
+                .duration(200)
+                .attr("r", 5);
+            tooltip.style("display", "none");
+        });
+  
+    Scattersvg.append("g")
+        .attr("transform", `translate(0, ${ySize - margin})`)
+        .call(d3.axisBottom(x));
+
+    Scattersvg.append("g")
+        .attr("transform", `translate(${margin}, 0)`)
+        .call(d3.axisLeft(y));
 
     Scattersvg.append("text")
         .attr("x",xSize / 2)
