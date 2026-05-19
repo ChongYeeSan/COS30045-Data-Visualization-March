@@ -13,7 +13,7 @@ function showPage(pageId) {
 
 showPage('home');
 
-showChart('scatter');
+showChart('scatter'); // Show the scatter plot by default
 
 d3.csv("data/Energy_consumption_for_televion_in_Australia.csv", function(d) {
     return {
@@ -175,7 +175,8 @@ myData2.forEach((d, i) => {
         .text(d.brand)
         .attr("font-size", "14px");
 });
-    
+
+/* Function to show the selected chart and hide the others when a navigation link is clicked */
 function showChart(chartId) {
     document.querySelectorAll('.chart-container').forEach(container => {
         container.style.display = 'none';

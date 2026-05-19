@@ -180,6 +180,7 @@ footer {
     font-size: 16px;
 }
 
+/* Added styling for the chart container */
 .chart-container {
     background-color: #FFFFFF;
     border-radius: 12px;
@@ -188,7 +189,7 @@ footer {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     box-sizing: border-box;
 }
-
+/* Text styling for the chart */
 .chart-container text {
     fill: black;
 }

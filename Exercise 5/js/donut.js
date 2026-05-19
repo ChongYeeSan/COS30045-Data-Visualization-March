@@ -69,7 +69,8 @@ d3.csv("data/Ex5_TV_energy_Allsizes_byScreenType.csv", function(d) {
         .innerRadius(80)
         .outerRadius(radius - 10); // Adjusted outer radius for label positioning
 
-    // Draw arcs
+    /* Generated using Claude AI */
+    /* Added mouseover, mousemove, and mouseout events to the arcs for interactivity */
     grpArc.append("path")
         .attr("d", arcGenerator)
         .attr("fill", d => color(d.data.screentech))
@@ -97,7 +98,8 @@ d3.csv("data/Ex5_TV_energy_Allsizes_byScreenType.csv", function(d) {
             tooltip.style("display", "none");
         });
 
-    // Add labels
+    /* Generated using Claude AI */
+    /* Added percentage labels and positioned them in the center of each arc */
     grpArc.append("text")
         .text(d => { 
             d.percentage = (d.endAngle - d.startAngle) / (2 * Math.PI);
@@ -128,14 +130,15 @@ data.forEach((d, i) => {
         donutLegend.append("rect") // Add colored rectangles for the legend
             .attr("width", 20)
             .attr("height", 20)
+            .attr("x", 50)
             .attr("y", i * 30)
             .attr("fill", color(d.screentech));
 
             // Add text labels for the legend
         donutLegend.append("text") 
-            .attr("x", 30)
+            .attr("x", 80)
             .attr("y", i * 30 + 15)
             .text(d.screentech)
             .attr("font-size", "14px");
-    });  // closes forEach
+    });  
 });

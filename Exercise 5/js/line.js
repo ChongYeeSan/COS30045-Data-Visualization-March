@@ -56,6 +56,7 @@
         .attr("transform", `translate(${Lmargin}, 0)`)
         .call(d3.axisLeft(y));
 
+    /* Shows a line for each state using the line generator and the corresponding colors from the states array */
     states.forEach(state => {
         const line = d3.line()
             .x(d => x(d.year))
@@ -85,6 +86,7 @@
 const lineLegend = Linesvg.append("g")
     .attr("transform", `translate(${xLSize - legendWidth + 10}, ${Lmargin})`);
 
+/* Insert tooltip for interactivity */
 const tooltip = d3.select("body")
     .append("div")
     .style("position", "absolute")
@@ -99,7 +101,8 @@ states.forEach((state, i) => {
     const line = d3.line()
         .x(d => x(d.year))
         .y(d => y(d[state.key]));
-    
+
+    /* Added mouseover, mousemove, and mouseout events to the lines for interactivity */
     Linesvg.append("path")
         .datum(data)
         .attr("fill", "none")
@@ -120,6 +123,7 @@ states.forEach((state, i) => {
             tooltip.style("display", "none");
         });
 
+    /* Added legend with colored lines and labels for each state */
     lineLegend.append("line")
         .attr("x1", 0)
         .attr("x2", 20)
@@ -135,6 +139,7 @@ states.forEach((state, i) => {
         .attr("font-size", "14px");
 });
 
+/* Shows a message in the console if there is an error loading the CSV file */
 }).catch(error => {
     console.error("Error loading the CSV file:", error);
 });

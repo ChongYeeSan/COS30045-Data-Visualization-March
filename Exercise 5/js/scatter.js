@@ -29,7 +29,7 @@
         .domain([0, d3.max(data, d => d.energy_consumption)])
         .range([ySize - margin, margin]);
 
-
+    /* Insert tooltip for interactivity */
     const tooltip = d3.select("body")
         .append("div")
         .attr("position", "absolute")
@@ -40,6 +40,7 @@
         .style("font-size", "12px")
         .style("display", "none");
 
+    /* Added mouseover, mousemove, and mouseout events to the circles for interactivity */
     Scattersvg.append("g")
         .selectAll("circle")
         .data(data).enter()
@@ -67,7 +68,8 @@
                 .attr("r", 5);
             tooltip.style("display", "none");
         });
-  
+    
+    /* Added axes and labels for the scatter plot */
     Scattersvg.append("g")
         .attr("transform", `translate(0, ${ySize - margin})`)
         .call(d3.axisBottom(x));
@@ -82,6 +84,7 @@
         .attr("text-anchor", "middle")
         .text("Star Rating");
 
+    /* Added y-axis label for energy consumption */
     Scattersvg.append("text")
         .attr("x", -ySize / 2)
         .attr("y", 15)
