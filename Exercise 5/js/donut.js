@@ -81,5 +81,22 @@ d3.csv("data/Ex5_TV_energy_Allsizes_byScreenType.csv", function(d) {
         .attr("text-anchor", "middle")
         .attr("font-size", "16px")
         .attr("font-weight", "bold")
-        .text("Mean Energy Consumption by Screen Technology");
+        .text("Mean Energy Consumption by Screen Technology")
+
+    const donutLegend = donutsvg.append("g")
+            .attr("transform", `translate(${width - margin.right + 20}, ${margin.top})`);
+
+    data.forEach((d, i) => {
+        donutLegend.append("rect")
+            .attr("width", 20)
+            .attr("height", 20)
+            .attr("y", i * 30)
+            .attr("fill", color(d.screentech));
     });
+
+        donutLegend.append("text")
+            .attr("x", 30)
+            .attr("y", i * 30 + 15)
+            .text(d.screentech)
+            .attr("font-size", "14px");
+});

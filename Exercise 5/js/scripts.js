@@ -13,6 +13,8 @@ function showPage(pageId) {
 
 showPage('home');
 
+showChart('scatter');
+
 d3.csv("data/Energy_consumption_for_televion_in_Australia.csv", function(d) {
     return {
         brand: d.Brand_Reg,
@@ -25,6 +27,8 @@ d3.csv("data/Energy_consumption_for_televion_in_Australia.csv", function(d) {
     console.log("Max energy consumption:", d3.max(data, d => d.energyConsumption));
     console.log("Min energy consumption:", d3.min(data, d => d.energyConsumption));
 });
+
+
 
 // Data Story 1 
 
@@ -171,5 +175,13 @@ myData2.forEach((d, i) => {
         .text(d.brand)
         .attr("font-size", "14px");
 });
+    
+function showChart(chartId) {
+    document.querySelectorAll('.chart-container').forEach(container => {
+        container.style.display = 'none';
+    });
+    document.getElementById(chartId).style.display = 'block';
+}
+
 
 

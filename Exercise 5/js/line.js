@@ -81,10 +81,25 @@
         .attr("text-anchor", "middle")
         .text("Average Price");
 
+const lineLegend = Linesvg.append("g")
+    .attr("transform", `translate(${xLSize - Lmargin + 20}, ${Lmargin})`);
+
+states.forEach((state, i) => {
+    lineLegend.append("rect")
+        .attr("x1", 0)
+        .attr("x2", 20)
+        .attr("y1", i * 20 + 8)
+        .attr("y2", i * 20 + 8)
+        .attr("stroke", state.color)
+        .attr("stroke-width", 2);
+
+    lineLegend.append("text")
+        .attr("x", 25)
+        .attr("y", i * 20 + 12)
+        .text(state.name)
+        .attr("font-size", "14px");
+});
 
 }).catch(error => {
     console.error("Error loading the CSV file:", error);
 });
-
-
-

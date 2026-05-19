@@ -34,6 +34,9 @@ d3.csv("data/Ex5_TV_energy_55inchtv_byScreenType.csv", function(d) {
         .attr("transform", `translate(${margin.left}, 0)`)
         .call(d3.axisLeft(y));  
 
+    const barColors = ["#53a956", "#6666ff", "#fd6ab1"];
+    
+
     barsvg.selectAll("rect")
         .data(data)
         .join("rect")
@@ -41,7 +44,7 @@ d3.csv("data/Ex5_TV_energy_55inchtv_byScreenType.csv", function(d) {
         .attr("y", d => y(d.screenTech))
         .attr("width", d => x(d.meanEnergy) - margin.left)
         .attr("height", y.bandwidth())
-        .attr("fill", "steelblue");
+        .attr("fill", (d, i) => barColors[i]);
 
         // Add axis labels
     barsvg.append("text")
@@ -56,4 +59,21 @@ d3.csv("data/Ex5_TV_energy_55inchtv_byScreenType.csv", function(d) {
         .attr("transform", "rotate(-90)")
         .attr("text-anchor", "middle")
         .text("Screen Technology");
+
+    const barLegend = barsvg.append("g")
+        .attr("transform", `translate(${width - margin.right + 10}, ${margin.top})`);
+
+    data.forEach((d, i) => {
+        barLegend.append("rect")
+            .attr("width", 15)
+            .attr("height", 15)
+            .attr("y", i * 25)
+            .attr("fill", barColors[i]);
+
+        barLegend.append("text")
+            .attr("x", 30)
+            .attr("y", i * 25 + 12)
+            .text(d.screenTech)
+            .attr("font-size", "14px");
+    });
 });
