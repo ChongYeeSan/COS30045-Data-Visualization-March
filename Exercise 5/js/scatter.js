@@ -6,7 +6,7 @@
 
     // Creating the SVG
 
-    const svg = d3.select("#scatter")
+    const Scattersvg = d3.select("#scatter")
         .append("svg")
         .attr("width", xSize)
         .attr("height", ySize)
@@ -29,30 +29,30 @@
         .domain([0, d3.max(data, d => d.energy_consumption)])
         .range([ySize - margin, margin]);
     
-    svg.append("g")
+    Scattersvg.append("g")
         .attr("transform", `translate(0, ${ySize - margin})`)
         .call(d3.axisBottom(x));
 
-    svg.append("g")
+    Scattersvg.append("g")
         .attr("transform", `translate(${margin}, 0)`)
         .call(d3.axisLeft(y));
 
-    svg.append("g")
+    Scattersvg.append("g")
         .selectAll("circle")
         .data(data).enter()
         .append("circle")
         .attr("cx", d => x(d.star_rating))
         .attr("cy", d => y(d.energy_consumption))
         .attr("r", 5)
-        .style("fill", "#f61212");
+        .style("fill", "#9932e3");
 
-    svg.append("text")
+    Scattersvg.append("text")
         .attr("x",xSize / 2)
         .attr("y", ySize - 5)
         .attr("text-anchor", "middle")
         .text("Star Rating");
 
-    svg.append("text")
+    Scattersvg.append("text")
         .attr("x", -ySize / 2)
         .attr("y", 15)
         .attr("transform", "rotate(-90)")

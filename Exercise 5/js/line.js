@@ -1,61 +1,81 @@
-    const xSize = 500;
-    const ySize = 500;
-    const margin = 60;
-    const xMax = xSize - margin*2;
-    const yMax = ySize - margin*2;
+    const xLSize = 500;
+    const yLSize = 500;
+    const Lmargin = 60;
+    const xLMax = xLSize - Lmargin*2;
+    const yLMax = yLSize - Lmargin*2;
 
     // Creating the SVG
 
-    const svg = d3.select("#line")
+    const Linesvg = d3.select("#line")
         .append("svg")
-        .attr("width", xSize)
-        .attr("height", ySize)
+        .attr("width", xLSize)
+        .attr("height", yLSize)
         
     //Load CSV file
 
     d3.csv("data/Ex5_ARE_Spot_Prices.csv", function(d) {
         return {
             year: +d.Year,
-            average_price: +d["Average Price (notTas-Snowy)"],       
+            queensland: +d["Queensland ($ per megawatt hour)"],
+            newSouthWales: +d["New South Wales ($ per megawatt hour)"],
+            victoria: +d["Victoria ($ per megawatt hour)"],
+            southAustralia: +d["South Australia ($ per megawatt hour)"],
+            tasmania: +d["Tasmania ($ per megawatt hour)"],
+            snowy: +d["Snowy ($ per megawatt hour)"],      
         };
     }).then(data => {
         console.log(data);
 
+        //Array of states
+
+        const states = [
+            { name: "Queensland", key: "queensland", color: "#fc7676" },
+            { name: "New South Wales", key: "newSouthWales", color: "#b912f6" },
+            { name: "Victoria", key: "victoria", color: "#f6a212" },
+            { name: "South Australia", key: "southAustralia", color: "#7b4817" },
+            { name: "Tasmania", key: "tasmania", color: "#1212f6" },
+            { name: "Snowy", key: "snowy", color: "#f612f6" }
+        ];
+
     const x = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.year)])
-        .range([margin, xSize - margin]);
+        .domain(d3.extent(data, d => d.year))
+        .range([Lmargin, xLSize - Lmargin]);
+
+    const maxY = d3.max(data, d => d3.max(states, s => d[s.key]));
 
     const y = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.average_price)])
-        .range([ySize - margin, margin]);
+        .domain([0, maxY])
+        .range([yLSize - Lmargin, Lmargin]);
     
-    svg.append("g")
-        .attr("transform", `translate(0, ${ySize - margin})`)
+    Linesvg.append("g")
+        .attr("transform", `translate(0, ${yLSize - Lmargin})`)
         .call(d3.axisBottom(x));
 
-    svg.append("g")
-        .attr("transform", `translate(${margin}, 0)`)
+    Linesvg.append("g")
+        .attr("transform", `translate(${Lmargin}, 0)`)
         .call(d3.axisLeft(y));
 
-    const line = d3.line()
-        .x(d => x(d.year))
-        .y(d => y(d.average_price));
+    states.forEach(state => {
+        const line = d3.line()
+            .x(d => x(d.year))
+            .y(d => y(d[state.key]));
 
-    svg.append("path")
-        .datum(data)
-        .attr("fill", "none")
-        .attr("stroke", "#f61212")
-        .attr("stroke-width", 2)
-        .attr("d", line);
+        Linesvg.append("path")
+            .datum(data)
+            .attr("fill", "none")
+            .attr("stroke", state.color)
+            .attr("stroke-width", 2)
+            .attr("d", line);
+    });
 
-    svg.append("text")
-        .attr("x",xSize / 2)
-        .attr("y", ySize - 5)
+    Linesvg.append("text")
+        .attr("x",xLSize / 2)
+        .attr("y", yLSize - 5)
         .attr("text-anchor", "middle")
         .text("Year");
 
-    svg.append("text")
-        .attr("x", -ySize / 2)
+    Linesvg.append("text")
+        .attr("x", -yLSize / 2)
         .attr("y", 15)
         .attr("transform", "rotate(-90)")
         .attr("text-anchor", "middle")
