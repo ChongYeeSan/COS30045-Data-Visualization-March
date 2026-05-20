@@ -218,3 +218,19 @@ footer {
     
 }
 
+/*Responsive ocntainer of the svg elements */
+.responsive-svg-container {
+    width: 100%;
+    max-width: 100px;
+}
+@media screen and (max-width: 600px) {
+    .responsive-svg-container {
+        max-width: 20px;
+    }
+    
+}
+
+.axis-label {
+    font-size: 14px;
+    fill: black;
+}
