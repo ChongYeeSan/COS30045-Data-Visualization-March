@@ -1,0 +1,46 @@
+/*Responsive ocntainer of the svg elements */
+.responsive-svg-container {
+    width: 100%;
+    max-width: 100px;
+}
+@media screen and (max-width: 600px) {
+    .responsive-svg-container {
+        max-width: 20px;
+    }
+    
+}
+
+.axis-label {
+    font-size: 14px;
+    fill: black;
+}
+
+#filter_screen {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#filters_screen .filter {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #69b3a2;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+#filters_screen .filter:hover {
+    background-color: #40a286;
+    transform: scale(1.05);
+}
+
+#filters_screen .filter.active {
+    background-color: #40a286;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}

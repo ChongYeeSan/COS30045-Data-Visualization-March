@@ -10,9 +10,7 @@
     const Linesvg = d3.select("#line")
         .append("svg")
         .attr("viewBox", `0 0 ${xLSize} ${yLSize}`)
-        .attr("width", "100%")
-        .attr("height", "auto");
-
+        
     //Load CSV file
 
     d3.csv("data/Ex5_ARE_Spot_Prices.csv", function(d) {

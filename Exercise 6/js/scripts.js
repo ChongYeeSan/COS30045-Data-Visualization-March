@@ -183,4 +183,3 @@ function showChart(chartId) {
     });
     document.getElementById(chartId).style.display = 'block';
 }
-

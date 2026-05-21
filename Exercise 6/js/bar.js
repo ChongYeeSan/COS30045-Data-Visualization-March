@@ -14,8 +14,6 @@ d3.csv("data/Ex5_TV_energy_55inchtv_byScreenType.csv", function(d) {
     const barsvg = d3.select("#bar")
         .append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
-        .attr("height", "auto")
-        .attr("width", "100%")
        
         //Load CSV file
     const x = d3.scaleLinear()
