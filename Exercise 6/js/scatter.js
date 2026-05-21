@@ -11,9 +11,9 @@
 
 
 // Exercise 5 Scatter - focus on #scatter
-    const xSize = 500;
+    const xSize = 700;
     const ySize = 500;
-    const margin = 60;
+    const margin = 80;
     const xMax = xSize - margin*2;
     const yMax = ySize - margin*2;
 
@@ -58,7 +58,7 @@
                 .duration(200)
                 .attr("r", 10);
             tooltip.style("display", "block")
-                .html(`<strong>Star Rating:</strong> ${d.star_rating}<br><strong>Energy:</strong> ${d3.format(".1f")(d.energy_consumption)} kWh/year`);
+                .html(`<strong>Star Rating:</strong> ${d3.format(".1f")(d.star_rating)}<br><strong>Energy:</strong> ${d3.format(".1f")(d.energy_consumption)} kWh/year`);
         })
         .on("mousemove", function(event) {
             tooltip.style("left", (event.pageX + 10) + "px")
@@ -81,6 +81,7 @@
         .attr("transform", `translate(${margin}, 0)`)
         .call(d3.axisLeft(y));
 
+    
     Scattersvg.append("text")
         .attr("x",xSize / 2)
         .attr("y", ySize - 5)
@@ -95,6 +96,13 @@
         .attr("text-anchor", "middle")
         .text("Energy Consumption");
 
+    Scattersvg.append("text")
+        .attr("x", xSize / 2 )
+        .attr("y", 30)  
+        .attr("text-anchor", "middle")
+        .attr("font-size", "16px")
+        .attr("font-weight", "bold")
+        .text("Energy consumed by star rating")   
 
 }).catch(error => {
     console.error("Error loading the CSV file:", error);
@@ -105,7 +113,7 @@
  /*Exercise 6 Scatter - targets #ex6-scatter*/ 
  //************************************************//
 
-    const xSize6 = 500;
+    const xSize6 = 800;
     const ySize6 = 500;
     const margin6 = 60;
     const xMax6 = xSize6 - margin6*2;
@@ -179,7 +187,7 @@
 
     scatter6svg.append("g")
         .attr("transform", `translate(${margin6}, 0)`)
-        .call(d3.axisLeft(y));
+        .call(d3.axisLeft(y).tickFormat(d3.format("d")));
 
     scatter6svg.append("text")
         .attr("x",xSize6 / 2)
@@ -195,8 +203,35 @@
         .attr("text-anchor", "middle")
         .text("Energy Consumption");
 
+    scatter6svg.append("text")
+        .attr("x", xSize6 / 2 )
+        .attr("y", 30)  
+        .attr("text-anchor", "middle")
+        .attr("font-size", "16px")
+        .attr("font-weight", "bold")
+        .text("Screen type based on star rating");
+    
+    const scatterColors = ["#f5a623", "#4682b4", "#7ed321"];
+    const scatterLabels = ["LCD", "LED", "OLED"];
+
     const scatterLegend = scatter6svg.append("g")
-        .attr("transform", `translate(${xSize6 - margin6.right + 10}, ${margin6.top})`);
+        .attr("transform", `translate(${xSize6 - margin6 - 10}, ${margin6 + 50})`);
+
+    scatterLabels.forEach((label, i) => {
+        scatterLegend.append("rect")
+            .attr("x", 0)
+            .attr("y", i * 25)
+            .attr("width", 15)
+            .attr("height", 15)
+            .attr("fill", scatterColors[i]);
+
+        scatterLegend.append("text")
+            .attr("x", 20)
+            .attr("y", i * 25 + 12)
+            .text(label)
+            .attr("fill", "black")
+            .attr("font-size", "14px")
+    });
 
 }).catch(error => {
     console.error("Error loading the CSV file:", error);

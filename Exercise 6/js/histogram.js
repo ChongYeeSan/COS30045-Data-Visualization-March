@@ -20,6 +20,12 @@ d3.csv("data/Ex6_TVdata.csv", function(d) {
 // creates a SVG canvas and positions the inner chart area
 const drawHistogram = (data) => {
 
+    const Histwidth = 900;
+    const Histheight = 500;
+    const Histmargin = {top: 40, right: 30, bottom:60, left:70};
+    const innerWidth = Histwidth - Histmargin.left - Histmargin.right;
+    const innerHeight = Histheight - Histmargin.top - Histmargin.bottom;
+
     const bins = binGenerator(data);
     console.log(bins);
 
@@ -46,7 +52,8 @@ const drawHistogram = (data) => {
             .nice();
 
         // Drawing histogram bars
-        innerChart.selectAll("rect")
+        innerChart.append("g")
+            .selectAll("rect")
             .data(bins)
             .join("rect")
             .attr("x", d => xHscale(d.x0))
@@ -57,13 +64,14 @@ const drawHistogram = (data) => {
             .attr("stroke", bodyBackgroundColor)
             .attr("stroke-width", 2);
 
-        // Adding axes to the histogram
-        const bottomAxis = d3.axisBottom(xHscale);
-
-        //Adding x-axis to the bottom of the chart realtive to the inner chart
+        // converting the x and y axis to integer number
         innerChart.append("g")
             .attr("transform", `translate(0, ${innerHeight})`)
-            .call(bottomAxis);
+            .call(d3.axisBottom(xHscale).tickFormat(d3.format("d")));
+        
+        innerChart.append("g")
+            .call(d3.axisLeft(yHscale).tickFormat(d3.format("d")));
+            
 
         svg.append("text")
             .text("Labelled energy Consumption (kWh/year)")
@@ -71,15 +79,9 @@ const drawHistogram = (data) => {
             .attr("y", Histmargin.top + innerHeight + 35)
             .attr("text-anchor", "middle")
             .attr("class", "axis-label");
-        
-        //Adding a left axis
-
-        const leftAxis = d3.axisLeft(yHscale);
+    
 
         //Adding y-axis to the left of the chart realtive to the inner chart
-        innerChart.append("g")
-            .call(leftAxis);
-
         svg.append("text")
             .text("Frequency")
             .attr("transform", "rotate(-90)")

@@ -41,7 +41,7 @@ d3.csv("data/Ex5_TV_energy_55inchtv_byScreenType.csv", function(d) {
         .attr("x", width / 2)
         .attr("y", height - 5)
         .attr("text-anchor", "middle")
-        .text("Mean Energy Consumption (kWh/year)");
+        .text("Energy Consumption (kWh/year)");
 
     barsvg.append("text")
         .attr("x", -height / 2)
@@ -49,6 +49,14 @@ d3.csv("data/Ex5_TV_energy_55inchtv_byScreenType.csv", function(d) {
         .attr("transform", "rotate(-90)")
         .attr("text-anchor", "middle")
         .text("Screen Technology");
+
+    barsvg.append("text")
+        .attr("x", width / 2 )
+        .attr("y", 30)  
+        .attr("text-anchor", "middle")
+        .attr("font-size", "16px")
+        .attr("font-weight", "bold")
+        .text("Energy consumption based on screen types")   
 
     // added colors for each bar
     const barColors = ["#53a956", "#6666ff", "#fd6ab1"];
