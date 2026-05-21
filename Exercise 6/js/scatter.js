@@ -13,10 +13,11 @@
         
     //Load CSV file
 
-    d3.csv("data/Ex5_TV_energy.csv", function(d) {
+    d3.csv("data/Ex6_TVdata.csv", function(d) {
         return {
-            star_rating: +d.star2,
-            energy_consumption: +d.energy_consumpt,       
+            star_rating: +d.star,
+            Energy_consumption: +d.energyConsumption,    
+            Screentech: d.screenTech   
         };
     }).then(data => {
         console.log(data);
@@ -26,36 +27,41 @@
         .range([margin, xSize - margin]);
 
     const y = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.energy_consumption)])
+        .domain([0, d3.max(data, d => d.Energy_consumption)])
         .range([ySize - margin, margin]);
 
     /* Insert tooltip for interactivity */
     const tooltip = d3.select("body")
         .append("div")
-        .attr("position", "absolute")
-        .attr("background", "white")
-        .attr("padding", "8px")
-        .attr("border", "1px solid #ccc")
-        .attr("border-radius", "4px")
+        .style("position", "absolute")
+        .style("background", "white")
+        .style("padding", "8px")
+        .style("border", "1px solid #ccc")
+        .style("border-radius", "4px")
         .style("font-size", "12px")
         .style("display", "none");
 
+        const colorScale = d3.scaleOrdinal()
+            .domain(["LCD", "LED", "OLED"])
+            .range(["#f5a623", "#4682b4", "#7ed321"])
     /* Added mouseover, mousemove, and mouseout events to the circles for interactivity */
     Scattersvg.append("g")
         .selectAll("circle")
         .data(data).enter()
         .append("circle")
         .attr("cx", d => x(d.star_rating))
-        .attr("cy", d => y(d.energy_consumption))
+        .attr("cy", d => y(d.Energy_consumption))
         .attr("r", 5)
-        .style("fill", "#9932e3")
+        .style("fill", d => colorScale(d.Screentech))
         .on("mouseover", function(event, d) {
             d3.select(this)
                 .transition()
                 .duration(200)
                 .attr("r", 10);
             tooltip.style("display", "block")
-                .html(`<strong>Star Rating:</strong> ${d.star_rating}<br><strong>Energy:</strong> ${d3.format(".1f")(d.energy_consumption)} kWh/year`);
+                .html(`<strong>Star Rating:</strong> ${d.Screentech}<br>
+                    <strong>Star Rating: </strong> ${d.star_rating}<br>
+                    <strong>Energy:</strong> ${d.Energy_consumption} kWh/year`);
         })
         .on("mousemove", function(event) {
             tooltip.style("left", (event.pageX + 10) + "px")
