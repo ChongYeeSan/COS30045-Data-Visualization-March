@@ -94,6 +94,14 @@ const tooltip = d3.select("body")
     .style("border-radius", "4px")
     .style("font-size", "12px")
     .style("display", "none");
+
+    Linesvg.append("text")
+        .attr("x", (xLSize - legendWidth) / 2)
+        .attr("y", 25)  
+        .attr("text-anchor", "middle")
+        .attr("font-size", "16px")
+        .attr("font-weight", "bold")
+        .text("Average Spot Prices by State")
     
 states.forEach((state, i) => {
     const line = d3.line()
@@ -135,6 +143,8 @@ states.forEach((state, i) => {
         .attr("y", i * 25 + 12)
         .text(state.name)
         .attr("font-size", "14px");
+
+    
 });
 
 /* Shows a message in the console if there is an error loading the CSV file */

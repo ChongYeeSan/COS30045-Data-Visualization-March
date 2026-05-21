@@ -1,5 +1,5 @@
 const populateFilters = (data) => {
-    d3.select("#filters_screen")
+    d3.select("#ex6-filters")
         .selectAll(".filter")
         .data(filters_screen)
         .join("button")
@@ -11,7 +11,7 @@ const populateFilters = (data) => {
                     filter.isActive = filter.id === d.id;
                 });
                 
-                d3.selectAll("#filters_screen .filter")
+                d3.selectAll("#ex6-filters .filter")
                     .classed("active", filter => filter.id === d.id);
 
                 updateHistogram(d.id, data);
@@ -25,7 +25,8 @@ const populateFilters = (data) => {
         
         const updateBins = binGenerator(updateData);
         
-        d3.selectAll("#histogram rect")
+        d3.selectAll("#ex6-histogram svg g")
+            .selectAll("rect")
             .data(updateBins)
             .transition()
             .duration(500)

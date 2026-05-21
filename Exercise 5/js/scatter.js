@@ -32,11 +32,11 @@
     /* Insert tooltip for interactivity */
     const tooltip = d3.select("body")
         .append("div")
-        .attr("position", "absolute")
-        .attr("background", "white")
-        .attr("padding", "8px")
-        .attr("border", "1px solid #ccc")
-        .attr("border-radius", "4px")
+        .style("position", "absolute")
+        .style("background", "white")
+        .style("padding", "8px")
+        .style("border", "1px solid #ccc")
+        .style("border-radius", "4px")
         .style("font-size", "12px")
         .style("display", "none");
 

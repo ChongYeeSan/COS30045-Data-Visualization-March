@@ -23,24 +23,34 @@
     margin-bottom: 10px;
 }
 
-#filters_screen .filter {
+
+#ex6-filters .filter {
     padding: 8px 16px;
     border: none;
     border-radius: 20px;
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
-    background-color: #69b3a2;
-    color: white;
+    background-color: #ffdd9a;
+    color: rgb(2, 2, 2);
     transition: all 0.3s ease;
 }
 
-#filters_screen .filter:hover {
-    background-color: #40a286;
+#ex6-filters .filter:hover {
+    background-color: #d7d7d7;
     transform: scale(1.05);
 }
 
-#filters_screen .filter.active {
-    background-color: #40a286;
+#ex6-filters .filter.active {
+    background-color: #b7875f;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.e6chart-container {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-sizing: border-box;
 }

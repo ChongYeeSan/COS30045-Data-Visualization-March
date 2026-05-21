@@ -4,7 +4,7 @@ const Histheight = 400;
 const innerWidth = Histwidth - Histmargin.left - Histmargin.right;
 const innerHeight = Histheight - Histmargin.top - Histmargin.bottom;
 
-const barColor = "#69b3a2";
+const barColor = "#9162ef";
 const bodyBackgroundColor = "#f0f0f0";
 
 const xHscale = d3.scaleLinear();

@@ -22,7 +22,7 @@ const drawHistogram = (data) => {
     const bins = binGenerator(data);
     console.log(bins);
 
-    const svg = d3.select("#histogram")
+    const svg = d3.select("#ex6-histogram")
         .append("svg")
         .attr("viewBox", `0 0 ${Histwidth} ${Histheight}`);
 
