@@ -195,6 +195,8 @@
         .attr("text-anchor", "middle")
         .text("Energy Consumption");
 
+    const scatterLegend = scatter6svg.append("g")
+        .attr("transform", `translate(${xSize6 - margin6.right + 10}, ${margin6.top})`);
 
 }).catch(error => {
     console.error("Error loading the CSV file:", error);

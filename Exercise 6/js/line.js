@@ -36,12 +36,14 @@
             { name: "Snowy", key: "snowy", color: "#fa3c88" }
         ];
 
+        // x axis is year
     const x = d3.scaleLinear()
         .domain(d3.extent(data, d => d.year))
         .range([Lmargin, xLSize - legendWidth - 20]);
 
     const maxY = d3.max(data, d => d3.max(states, s => d[s.key]));
-
+    
+        // shows the prices by state and maxY shows the highest price 
     const y = d3.scaleLinear()
         .domain([0, maxY])
         .range([yLSize - Lmargin, Lmargin]);
@@ -60,6 +62,7 @@
             .x(d => x(d.year))
             .y(d => y(d[state.key]));
 
+    // Adds the line chart based on price and state
     Linesvg.append("path")
         .datum(data)
         .attr("fill", "none")
@@ -68,6 +71,7 @@
         .attr("d", line);
     });
 
+    // Insert labels for x and y axis
     Linesvg.append("text")
         .attr("x",xLSize / 2)
         .attr("y", yLSize - 5)

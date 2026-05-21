@@ -17,6 +17,7 @@ d3.csv("data/Ex6_TVdata.csv", function(d) {
     console.error("Error loading the data: ", error);
 });
 
+// creates a SVG canvas and positions the inner chart area
 const drawHistogram = (data) => {
 
     const bins = binGenerator(data);
@@ -26,6 +27,7 @@ const drawHistogram = (data) => {
         .append("svg")
         .attr("viewBox", `0 0 ${Histwidth} ${Histheight}`);
 
+        // uses margin values so it doesn't get cut off
         const innerChart = svg.append("g")
         .attr("transform", `translate(${Histmargin.left}, ${Histmargin.top})`);
     
@@ -85,6 +87,14 @@ const drawHistogram = (data) => {
             .attr("y", 15)
             .attr("text-anchor", "middle")
             .attr("class", "axis-label");
+        
+        svg.append("text")
+            .attr("x", Histwidth / 2 )
+            .attr("y", 30)  
+            .attr("text-anchor", "middle")
+            .attr("font-size", "16px")
+            .attr("font-weight", "bold")
+            .text("Energy Consumption of different TV screen types and sizes")
 
     };
 

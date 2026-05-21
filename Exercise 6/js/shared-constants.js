@@ -8,7 +8,7 @@ const barColor = "#9162ef";
 const bodyBackgroundColor = "#f0f0f0";
 
 const xHscale = d3.scaleLinear();
-const yHscale = d3.scaleLinear();
+const yHscale = d3.scaleLinear(); 
 
 const binGenerator = d3.bin()
     .value(d => d.EnergyConsumption);

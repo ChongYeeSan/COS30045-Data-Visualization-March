@@ -1,3 +1,4 @@
+// Load CSV file
 d3.csv("data/Ex5_TV_energy_55inchtv_byScreenType.csv", function(d) {
     return {
         screenTech: d.Screen_Tech,
@@ -6,6 +7,7 @@ d3.csv("data/Ex5_TV_energy_55inchtv_byScreenType.csv", function(d) {
 }).then(data => {
     console.log(data);
 
+    // Append the width and height 
     const width = 850;
     const height = 500;
 
@@ -15,11 +17,12 @@ d3.csv("data/Ex5_TV_energy_55inchtv_byScreenType.csv", function(d) {
         .append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
        
-        //Load CSV file
+        // x axis to show labelled energy consumption
     const x = d3.scaleLinear()
         .domain([0, d3.max(data, d => d.meanEnergy)])
         .range([margin.left, width - margin.right]);
-
+    
+        // y axis to show screen types
     const y = d3.scaleBand()
         .domain(data.map(d => d.screenTech))
         .range([margin.top, height - margin.bottom])
@@ -33,19 +36,7 @@ d3.csv("data/Ex5_TV_energy_55inchtv_byScreenType.csv", function(d) {
         .attr("transform", `translate(${margin.left}, 0)`)
         .call(d3.axisLeft(y));  
 
-    const barColors = ["#53a956", "#6666ff", "#fd6ab1"];
-    
-
-    barsvg.selectAll("rect")
-        .data(data)
-        .join("rect")
-        .attr("x", margin.left)
-        .attr("y", d => y(d.screenTech))
-        .attr("width", d => x(d.meanEnergy) - margin.left)
-        .attr("height", y.bandwidth())
-        .attr("fill", (d, i) => barColors[i]);
-
-        // Add axis labels
+    // Add axis labels
     barsvg.append("text")
         .attr("x", width / 2)
         .attr("y", height - 5)
@@ -59,8 +50,29 @@ d3.csv("data/Ex5_TV_energy_55inchtv_byScreenType.csv", function(d) {
         .attr("text-anchor", "middle")
         .text("Screen Technology");
 
+    // added colors for each bar
+    const barColors = ["#53a956", "#6666ff", "#fd6ab1"];
+
+    // make the legend appear on the right side
     const barLegend = barsvg.append("g")
-        .attr("transform", `translate(${width - margin.right + 10}, ${margin.top})`);
+        .attr("transform", `translate(${width - margin.right - 50}, ${margin.top})`);
+
+    data.forEach((d,i) => {
+        barLegend.append("rect")
+            .attr("x", 0)
+            .attr("y", i * 25)
+            .attr("width", 15)
+            .attr("height", 15)
+            .attr("fill", barColors[i]);
+    
+        barLegend.append("text")
+            .attr("x", 20)
+            .attr("y", i * 25 + 12)
+            .text(d.screenTech)
+            .attr("fill", "black")
+            .attr("font-size", "14px");
+
+    });
 
     const tooltip = d3.select("body")
         .append("div")
@@ -72,38 +84,33 @@ d3.csv("data/Ex5_TV_energy_55inchtv_byScreenType.csv", function(d) {
         .style("font-size", "12px")
         .style("display", "none");
 
-
-    barsvg.selectAll("rect")
-    .data(data)
-    .join("rect")
-    .attr("x", margin.left)
-    .attr("y", d => y(d.screenTech))
-    .attr("width", d => x(d.meanEnergy) - margin.left)
-    .attr("height", y.bandwidth())
-    .attr("fill", (d, i) => barColors[i])
-    .on("mouseover", function(event, d) {
-        d3.select(this)
-            .transition()
-            .duration(200)
-            .attr("opacity", 0.7);
-        tooltip.style("display", "block")
-            .html(`<strong>${d.screenTech}</strong><br>${d3.format(".1f")(d.meanEnergy)} kWh/year`);
-    })
-    .on("mousemove", function(event) {
-        tooltip.style("left", (event.pageX + 10) + "px")
-            .style("top", (event.pageY - 20) + "px");
-    })
-    .on("mouseout", function() {
-        d3.select(this)
-            .transition()
-            .duration(200)
-            .attr("opacity", 1);
-        tooltip.style("display", "none");
-
-        barLegend.append("text")
-            .attr("x", 30)
-            .attr("y", i * 25 + 12)
-            .text(d.screenTech)
-            .attr("font-size", "14px");
-    });
+    /* Added mouseover, mousemove, and mouseout events to the circles for interactivity */
+    barsvg.append("g")
+        .selectAll("rect")
+        .data(data)
+        .join("rect")
+        .attr("x", margin.left)
+        .attr("y", d => y(d.screenTech))
+        .attr("width", d => x(d.meanEnergy) - margin.left)
+        .attr("height", y.bandwidth())
+        .attr("fill", (d, i) => barColors[i])
+        .on("mouseover", function(event, d) {
+            d3.select(this)
+                .transition()
+                .duration(200)
+                .attr("opacity", 0.7);
+            tooltip.style("display", "block")
+                .html(`<strong>${d.screenTech}</strong><br>${d3.format(".1f")(d.meanEnergy)} kWh/year`);
+        })
+        .on("mousemove", function(event) {
+            tooltip.style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 20) + "px");
+        })
+        .on("mouseout", function() {
+            d3.select(this)
+                .transition()
+                .duration(200)
+                .attr("opacity", 1);
+            tooltip.style("display", "none");
+        });
 });
