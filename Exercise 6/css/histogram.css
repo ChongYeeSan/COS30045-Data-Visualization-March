@@ -1,10 +1,4 @@
-
-
-/*Responsive ocntainer of the svg elements */
-/* .responsive-svg-container {
-    width: 100%;
-    max-width: 1200px;
-} */
+/* allows layout to be flexible  */
 @media screen and (max-width: 600px) {
     .responsive-svg-container {
         max-width: 100%;
@@ -12,11 +6,13 @@
     
 }
 
+/* sets the font size to 14 and text color black */
 .axis-label {
     font-size: 14px;
     fill: black;
 }
 
+/* filter container layout */
 #filter_screen {
     display: flex;
     justify-content: flex-end;
@@ -25,7 +21,7 @@
     margin-bottom: 10px;
 }
 
-
+/* styling for the filter buttons in ex6-filters container */
 #ex6-filters .filter {
     padding: 8px 16px;
     border: none;
@@ -38,16 +34,20 @@
     transition: all 0.3s ease;
 }
 
+/* when mouse hovers on the button it changes from brown to grey */
+/* added a box shadow to make it look like its pressed down */
 #ex6-filters .filter:hover {
     background-color: #d7d7d7;
     transform: scale(1.05);
 }
 
+/* styles for buttons that is currently selected or active */
 #ex6-filters .filter.active {
     background-color: #b7875f;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* adds a white background with rounded corners */
 .e6chart-container {
     background-color: #FFFFFF;
     border-radius: 12px;

@@ -1,3 +1,4 @@
+// hides the rest of the page and shows Home
 function showPage(pageId) {
     document.querySelectorAll('.page').forEach(page => {
         page.style.display = 'none';
@@ -22,6 +23,7 @@ function showChart(chartId) {
 
 showChart('scatter'); // Show the scatter plot by default
 
+// Loads CSV file
 d3.csv("data/Energy_consumption_for_televion_in_Australia.csv", function(d) {
     return {
         brand: d.Brand_Reg,
@@ -67,6 +69,8 @@ const yScale = d3.scaleBand()
 
 const colors1 = ["pink", "orange", "green", "red"];
 
+
+// fill the bar with the colors from colors1
 svg.selectAll("rect")
     .data(myData)
     .join("rect")
@@ -126,6 +130,7 @@ const svg2 = d3.select("#chart2")
     .attr("height", height2)
     .attr("viewBox", `0 0 ${width2} ${height2}`);
 
+// calls the data to display the 4 highest models
 const myData2 = [
     {brand: "Samsung Electronics", modelCount: 731},
     {brand: "LG", modelCount: 683},
