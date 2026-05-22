@@ -24,8 +24,10 @@ const populateFilters = (data) => {
             : data.filter(tv => tv.ScreenTech === filterId);
         
         const updateBins = binGenerator(updateData);
+
+        yHscale.domain([0, d3.max(updateBins, d => d.length)]).nice();
         
-        d3.selectAll("#ex6-histogram svg g")
+        d3.select("#ex6-histogram svg g")
             .selectAll("rect")
             .data(updateBins)
             .transition()

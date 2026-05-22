@@ -1,11 +1,13 @@
+
+
 /*Responsive ocntainer of the svg elements */
-.responsive-svg-container {
+/* .responsive-svg-container {
     width: 100%;
-    max-width: 100px;
-}
+    max-width: 1200px;
+} */
 @media screen and (max-width: 600px) {
     .responsive-svg-container {
-        max-width: 20px;
+        max-width: 100%;
     }
     
 }

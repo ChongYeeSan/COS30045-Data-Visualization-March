@@ -20,12 +20,6 @@ d3.csv("data/Ex6_TVdata.csv", function(d) {
 // creates a SVG canvas and positions the inner chart area
 const drawHistogram = (data) => {
 
-    const Histwidth = 900;
-    const Histheight = 500;
-    const Histmargin = {top: 40, right: 30, bottom:60, left:70};
-    const innerWidth = Histwidth - Histmargin.left - Histmargin.right;
-    const innerHeight = Histheight - Histmargin.top - Histmargin.bottom;
-
     const bins = binGenerator(data);
     console.log(bins);
 

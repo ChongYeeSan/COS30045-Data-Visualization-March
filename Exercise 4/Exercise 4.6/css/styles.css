@@ -37,7 +37,7 @@ body {
     transform: scale(1.1);
 }
 
-/* Navigation bars */
+
 .nav-links {
     display: inline-flex;
     gap: 10px;

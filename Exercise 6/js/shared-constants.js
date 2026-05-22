@@ -1,9 +1,8 @@
-const Histmargin = {top: 20, right: 30, bottom: 50, left: 60};
-const Histwidth = 800;
-const Histheight = 400;
-const innerWidth = Histwidth - Histmargin.left - Histmargin.right;
-const innerHeight = Histheight - Histmargin.top - Histmargin.bottom;
-
+    const Histwidth = 900;
+    const Histheight = 500;
+    const Histmargin = {top: 40, right: 30, bottom:60, left:70};
+    const innerWidth = Histwidth - Histmargin.left - Histmargin.right;
+    const innerHeight = Histheight - Histmargin.top - Histmargin.bottom;
 const barColor = "#9162ef";
 const bodyBackgroundColor = "#f0f0f0";
 

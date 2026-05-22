@@ -13,6 +13,13 @@ function showPage(pageId) {
 
 showPage('home');
 
+function showChart(chartId) {
+    document.querySelectorAll('.chart-container').forEach(container => {
+        container.style.display = 'none';
+    });
+    document.getElementById(chartId).style.display = 'block';
+}
+
 showChart('scatter'); // Show the scatter plot by default
 
 d3.csv("data/Energy_consumption_for_televion_in_Australia.csv", function(d) {
@@ -30,13 +37,17 @@ d3.csv("data/Energy_consumption_for_televion_in_Australia.csv", function(d) {
 
 
 
-// Data Story 1 
+// Data Story 1
 
-const width = 1200;
-const height = 600;
+const margin1 = {top:20, right: 150, bottom: 50, left: 100};
+
+const width = 800;
+const height = 400;
 
 const svg = d3.select("#chart1")
     .append("svg")
+    .attr("width", width)
+    .attr("height", height)
     .attr("viewBox", `0 0 ${width} ${height}`);
 
 const myData = [
@@ -44,8 +55,6 @@ const myData = [
     {Screen_Tech: "OLED", avgPower: 86.94},
     {Screen_Tech: "LCD", avgPower: 96.45}
 ];
-
-const margin1 = {top: 20, right: 180, bottom: 50, left: 120};
 
 const xScale = d3.scaleLinear()
     .domain([0, 100])
@@ -82,14 +91,14 @@ svg.selectAll("label")
     .join("text")
     .attr("class", "label")
     .attr("x", d =>xScale(d.avgPower) + 5)
-    .attr("y", d => yScale(d.Screen_Tech) + yScale.bandwidth() / 2 + 5) 
+    .attr("y", d => yScale(d.Screen_Tech) + yScale.bandwidth() / 2 + 5)
     .text(d => d.avgPower + " kWh/year")
     .attr("font-size", "16px");
 
 const legend1 = svg.append("g")
-    .attr("transform", `translate(${width - margin1.right - 20}, ${margin1.top})`);
+    .attr("transform", `translate(${width - margin1.right + 20}, ${margin1.top})`);
 
-myData.forEach((d, i) => { 
+myData.forEach((d, i) => {
     legend1.append("rect")
         .attr("width", 20)
         .attr("height", 20)
@@ -106,11 +115,16 @@ myData.forEach((d, i) => {
 
 // Chart 2 - Brands with the most models
 
-const margin2 = {top:20, right: 20, bottom: 50, left: 60};
+const margin2 = {top:20, right: 150, bottom: 50, left: 100}
+
+const width2 = 800;
+const height2 = 400;
 
 const svg2 = d3.select("#chart2")
     .append("svg")
-    .attr("viewBox", `0 0 ${width} ${height}`);
+    .attr("width", width2)
+    .attr("height", height2)
+    .attr("viewBox", `0 0 ${width2} ${height2}`);
 
 const myData2 = [
     {brand: "Samsung Electronics", modelCount: 731},
@@ -121,12 +135,12 @@ const myData2 = [
 
 const xScale1 = d3.scaleBand()
     .domain(myData2.map(d => d.brand))
-    .range([margin2.left, width - margin2.right])
+    .range([margin2.left, width2 - margin2.right])
     .padding(0.3);
 
 const yScale2 = d3.scaleLinear()
     .domain([0, 800])
-    .range([height - margin2.bottom, margin2.top]);
+    .range([height2 - margin2.bottom, margin2.top]);
 
 
 const colors2 = ["steelblue", "orange", "green", "purple"];
@@ -137,12 +151,12 @@ svg2.selectAll("rect")
     .attr("x", d => xScale1(d.brand))
     .attr("y", d => yScale2(d.modelCount))
     .attr("width", xScale1.bandwidth())
-    .attr("height", d => height - margin2.bottom - yScale2(d.modelCount))
+    .attr("height", d => height2 - margin2.bottom - yScale2(d.modelCount))
     .attr("fill", (d, i) => colors2[i]);
 
 svg2.append("g")
     .attr("class", "axis")
-    .attr("transform", `translate(0, ${height - margin2.bottom})`)
+    .attr("transform", `translate(0, ${height2 - margin2.bottom})`)
     .call(d3.axisBottom(xScale1));
 
 svg2.append("g")
@@ -160,7 +174,7 @@ svg2.selectAll(".bar-label")
     .attr("font-size", "20px");
 
 const legend = svg2.append("g")
-    .attr("transform", `translate(${width - margin2.right - 150}, ${margin2.top})`);
+    .attr("transform", `translate(${width2 - margin2.right - 20}, ${margin2.top})`);
 
 myData2.forEach((d, i) => {
     legend.append("rect")
@@ -176,10 +190,3 @@ myData2.forEach((d, i) => {
         .attr("font-size", "14px");
 });
 
-/* Function to show the selected chart and hide the others when a navigation link is clicked */
-function showChart(chartId) {
-    document.querySelectorAll('.chart-container').forEach(container => {
-        container.style.display = 'none';
-    });
-    document.getElementById(chartId).style.display = 'block';
-}
