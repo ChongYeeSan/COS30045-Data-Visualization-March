@@ -1,3 +1,4 @@
+// shows the pages one at a time
 function showPage(pageId) {
     document.querySelectorAll('.page').forEach(page => {
         page.style.display = 'none';
@@ -13,12 +14,16 @@ function showPage(pageId) {
 
 showPage('home');
 
+//Load the CSV file
+
 d3.csv("data/Energy_consumption_for_televion_in_Australia.csv", function(d) {
     return {
         brand: d.Brand_Reg,
         screentech: d.Screen_Tech,
         energyConsumption: +d["Labelled energy consumption (kWh/year)"]
     };
+
+    //calls the data and display the highest and lowest value
 }).then(function(data) {
     console.log(data);
     console.log("Total records:", data.length);

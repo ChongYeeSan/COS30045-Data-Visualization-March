@@ -1,3 +1,4 @@
+// shows the pages one at a time
 function showPage(pageId) {
     document.querySelectorAll('.page').forEach(page => {
         page.style.display = 'none';
@@ -13,12 +14,15 @@ function showPage(pageId) {
 
 showPage('home');
 
+// Loads the CSV file
 d3.csv("data/Energy_consumption_for_televion_in_Australia.csv", function(d) {
     return {
         brand: d.Brand_Reg,
         screentech: d.Screen_Tech,
         energyConsumption: +d["Labelled energy consumption (kWh/year)"]
     };
+    
+    // calls the dataset and display the highest and lowest value
 }).then(function(data) {
     console.log(data);
     console.log("Total records:", data.length);
@@ -26,6 +30,7 @@ d3.csv("data/Energy_consumption_for_televion_in_Australia.csv", function(d) {
     console.log("Min energy consumption:", d3.min(data, d => d.energyConsumption));
 });
 
+// establish width and height for the canvas
 const width1 = 1200;
 const height1 = 600;
 
@@ -34,6 +39,7 @@ const margin1 = {top: 20, right: 20, bottom: 50, left: 60};
 const innerWidth1 = width1 - margin1.left - margin1.right;
 const innerHeight1 = height1 - margin1.top - margin1.bottom;
 
+// 
 const svg = d3.select("#chart1")
     .append("svg")
     .attr("viewBox", `0 0 ${width1} ${height1}`);
@@ -46,8 +52,6 @@ const myData = [
     {Screen_Tech: "LCD", avgPower: 96.45},
     {Screen_Tech: "OLED", avgPower: 86.94},
     {Screen_Tech: "LCD(LED)", avgPower: 73.40}
-    
-    
 ];
 
 const xBar = d3.scaleBand() // X axis values
