@@ -203,3 +203,8 @@ footer {
     color: black;
     transform: translateY(-2px);
 }
+
+#ex43-container {
+    width: 100%;
+    min-height: 300px;
+}

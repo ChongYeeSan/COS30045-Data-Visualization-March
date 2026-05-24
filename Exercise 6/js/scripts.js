@@ -195,3 +195,86 @@ myData2.forEach((d, i) => {
         .attr("font-size", "14px");
 });
 
+// Exercise 4.3
+
+const width43 = 1200;
+const height43 = 600;
+
+const svg43 = d3.select("#ex43-container")
+    .append("svg")
+    .attr("viewBox", `0 0 ${width43} ${height43}`)
+
+// Left side shapes
+svg43.append("rect")
+    .attr("x", 10)
+    .attr("y", 10)
+    .attr("width", 80)
+    .attr("height", 80)
+    .attr("fill", "#2c7be5")
+    .attr("rx", 5);
+
+svg43.append("circle")
+    .attr("cx", 50)
+    .attr("cy", 150)
+    .attr("r", 40)
+    .attr("fill", "#f5a623");
+
+svg43.append("polygon")
+    .attr("points", "50,220 10,290 90,290")
+    .attr("fill", "#7ed321");
+
+// Right side shapes
+svg43.append("rect")
+    .attr("x", 1110)
+    .attr("y", 10)
+    .attr("width", 80)
+    .attr("height", 80)
+    .attr("fill", "#2c7be5")
+    .attr("rx", 5);
+
+svg43.append("circle")
+    .attr("cx", 1150)
+    .attr("cy", 150)
+    .attr("r", 40)
+    .attr("fill", "#f5a623");
+
+svg43.append("polygon")
+    .attr("points", "1150,220 1110,290 1190,290")
+    .attr("fill", "#7ed321");
+
+//Exercise 4.5
+
+const myData45 = [
+    {Screen_Tech: "LCD", avgPower: 96.45},
+    {Screen_Tech: "OLED", avgPower: 86.94},
+    {Screen_Tech: "LCD(LED)", avgPower: 73.40}
+];
+
+const height45 = 40;
+const spacing45 = 10;
+
+const svg45 = d3.select("#ex45-container")
+    .append("svg")
+    .attr("width", "100%")
+    .attr("height", 200);
+
+/* Adding the unscaled bars horisontally */
+svg45.selectAll("rect")
+    .data(myData45)
+    .join("rect")
+    .attr("x", 0)
+    .attr("y", (d, i) => i * (height45 + spacing45))
+    .attr("width", d => d.avgPower * 5)
+    .attr("height", height45)
+    .attr("fill", "#725dbd");
+
+// Adds labels beside the chart    
+svg45.selectAll("text") 
+    .data(myData45)
+    .join("text")
+    .attr("x", d => d.avgPower * 5 + 5)
+    .attr("y", (d, i) => i * (height45 + spacing45) + height45 / 2 + 5)
+    .text(d => `${d.Screen_Tech}: ${d.avgPower}`)
+    .attr("font-size", 16);
+
+
