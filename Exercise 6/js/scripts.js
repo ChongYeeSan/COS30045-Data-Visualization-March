@@ -67,7 +67,7 @@ const yScale = d3.scaleBand()
     .range([margin1.top, height - margin1.bottom])
     .padding(0.3);
 
-const colors1 = ["pink", "orange", "green", "red"];
+const colors1 = ["pink", "orange", "green"];
 
 
 // fill the bar with the colors from colors1
@@ -80,17 +80,20 @@ svg.selectAll("rect")
     .attr("height", yScale.bandwidth())
     .attr("fill", (d, i) => colors1[i]);
 
+// calls the xScale to render the x axis
 svg.append("g")
     .attr("class", "axis")
     .attr("transform", `translate(0, ${height - margin1.bottom})`)
     .call(d3.axisBottom(xScale));
 
+// calls the yScale to render the x axis
 svg.append("g")
     .attr("class", "axis")
     .attr("transform", `translate(${margin1.left}, 0)`)
     .call(d3.axisLeft(yScale));
 
-svg.selectAll("label")
+// display the labels on the right side of the chart
+svg.selectAll("label") 
     .data(myData)
     .join("text")
     .attr("class", "label")
@@ -99,9 +102,11 @@ svg.selectAll("label")
     .text(d => d.avgPower + " kWh/year")
     .attr("font-size", "16px");
 
+//append the legend on the right side
 const legend1 = svg.append("g")
     .attr("transform", `translate(${width - margin1.right + 20}, ${margin1.top})`);
 
+// adding the color on the legend base on the color of the brands is given
 myData.forEach((d, i) => {
     legend1.append("rect")
         .attr("width", 20)
@@ -138,10 +143,12 @@ const myData2 = [
     {brand: "Hisense", modelCount: 323},
 ]
 
+
 const xScale1 = d3.scaleBand()
     .domain(myData2.map(d => d.brand))
     .range([margin2.left, width2 - margin2.right])
     .padding(0.3);
+
 
 const yScale2 = d3.scaleLinear()
     .domain([0, 800])
@@ -150,6 +157,7 @@ const yScale2 = d3.scaleLinear()
 
 const colors2 = ["steelblue", "orange", "green", "purple"];
 
+// fill the bar with the colors from colors1
 svg2.selectAll("rect")
     .data(myData2)
     .join("rect")
@@ -159,16 +167,19 @@ svg2.selectAll("rect")
     .attr("height", d => height2 - margin2.bottom - yScale2(d.modelCount))
     .attr("fill", (d, i) => colors2[i]);
 
+// calls the xScale1 to render the x axis    
 svg2.append("g")
     .attr("class", "axis")
     .attr("transform", `translate(0, ${height2 - margin2.bottom})`)
     .call(d3.axisBottom(xScale1));
 
+// calls the yScale2 to render the x axis 
 svg2.append("g")
     .attr("class", "axis")
     .attr("transform", `translate(${margin2.left}, 0)`)
     .call(d3.axisLeft(yScale2));
 
+//displays the values on the top of the chart    
 svg2.selectAll(".bar-label")
     .data(myData2)
     .join("text")
@@ -178,9 +189,11 @@ svg2.selectAll(".bar-label")
     .text(d => d.modelCount)
     .attr("font-size", "20px");
 
+//legend appear on the rightside
 const legend = svg2.append("g")
     .attr("transform", `translate(${width2 - margin2.right - 20}, ${margin2.top})`);
 
+//adds respective color to the legend following the chart color given    
 myData2.forEach((d, i) => {
     legend.append("rect")
         .attr("width", 20)
