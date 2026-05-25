@@ -51,7 +51,7 @@
         .attr("cx", d => x(d.star_rating))
         .attr("cy", d => y(d.energy_consumption))
         .attr("r", 5)
-        .style("fill", "#9932e3")
+        .style("fill", "#5c43bf")
         .on("mouseover", function(event, d) {
             d3.select(this)
                 .transition()
